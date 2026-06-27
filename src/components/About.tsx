@@ -20,7 +20,7 @@ export const About = () => (
       {/* Text — left desktop, top mobile. self-center vertically centers within row */}
       <div className="min-w-0 md:w-[60%] shrink-0 order-1 self-center py-10 md:py-12 pr-2 md:pr-8">
         <div className="reveal">
-          <p className="kicker text-white/50 mb-4">{label}</p>
+          <p className="kicker-yellow mb-4">{label}</p>
         </div>
 
         <h2

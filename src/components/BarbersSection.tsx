@@ -108,7 +108,7 @@ export const BarbersSection = () => {
       <div className="mx-auto max-w-350">
         {/* Section header */}
         <div className="text-center mb-20">
-          <p className="kicker text-[--text-muted] mb-4 reveal">{label}</p>
+          <p className="kicker-yellow mb-4 reveal">{label}</p>
           <h2
             className="font-graffiti text-[--text-primary] reveal reveal-delay-1"
             style={{ fontSize: "clamp(2.2rem, 6vw, 4.5rem)", lineHeight: 1.1 }}

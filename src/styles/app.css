@@ -1,5 +1,17 @@
 @import "tailwindcss" source("../");
 
+/* ── Self-hosted Nunito ExtraLight ────────────────────────────── */
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("/fonts/Nunito-ExtraLight.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ── Self-hosted variable font ────────────────────────────────── */
 @font-face {
   font-family: "TT Octosquares Trial";
@@ -38,12 +50,12 @@
     --accent-red: #ff2200;
 
     /* Ridge pattern width — wider on mobile (~12.5vw = 8 ridges), tighter on desktop (~5vw = 20 ridges) */
-    --ridge-w: 12.5vw;
+    --ridge-w: 12vw;
   }
 
   @media (width >= 768px) {
     :root {
-      --ridge-w: 5vw;
+      --ridge-w: 10vw;
     }
   }
 
@@ -73,13 +85,14 @@
       repeating-linear-gradient(
         90deg,
         rgba(255, 255, 255, 0) 0,
-        rgba(255, 255, 255, 0.38) 0,
-        rgba(255, 255, 255, 0.38) calc(var(--ridge-w) * 0.0526),
-        rgba(255, 255, 255, 0.1) calc(var(--ridge-w) * 0.2105),
+        rgba(255, 255, 255, 0.65) 0,
+        rgba(255, 255, 255, 0.65) calc(var(--ridge-w) * 0.0526),
+        rgba(255, 255, 255, 0.22) calc(var(--ridge-w) * 0.1053),
+        rgba(255, 255, 255, 0.08) calc(var(--ridge-w) * 0.2105),
         rgba(0, 0, 0, 0) calc(var(--ridge-w) * 0.4211),
-        rgba(0, 0, 0, 0.18) calc(var(--ridge-w) * 0.7368),
-        rgba(0, 0, 0, 0.24) calc(var(--ridge-w) * 0.7895),
-        rgba(0, 0, 0, 0.24) calc(var(--ridge-w) * 0.8421),
+        rgba(0, 0, 0, 0.28) calc(var(--ridge-w) * 0.7368),
+        rgba(0, 0, 0, 0.42) calc(var(--ridge-w) * 0.7895),
+        rgba(0, 0, 0, 0.42) calc(var(--ridge-w) * 0.8421),
         rgba(0, 0, 0, 0) var(--ridge-w)
       ),
       /* Top-to-bottom tonal shift */
@@ -99,6 +112,19 @@
     position: relative;
     z-index: 1;
   }
+
+  /* Grain overlay — SVG feTurbulence noise, sits between bg and content */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    mix-blend-mode: overlay;
+    opacity: 0.12;
+  }
 }
 
 /* ── Typography utilities ─────────────────────────────────────── */
@@ -106,6 +132,12 @@
   .font-graffiti {
     font-family: "TT Octosquares Trial", sans-serif;
     font-weight: 800;
+  }
+
+  /* Nunito 500 — logo only */
+  .font-logo {
+    font-family: "Nunito", sans-serif;
+    font-weight: 500;
   }
 
   .kicker {
@@ -129,17 +161,20 @@
 @layer utilities {
   .neon-text {
     color: var(--neon-yellow);
-    opacity: 0.88;
+    opacity: 1;
     text-shadow:
-      0 0 5px #fff,
+      0 0 2px #fff,
       0 0 8px #fff,
       0 0 16px #fff,
-      0 0 32px var(--neon-glow),
-      0 0 62px var(--neon-glow),
-      0 0 72px var(--neon-glow),
-      0 0 82px var(--neon-glow),
-      0 0 121px var(--neon-glow);
-    animation: neon-flicker 8s 1s infinite;
+      0 0 25px #ff1900,
+      0 0 50px #ff1900,
+      0 0 75px #ff1900,
+      0 0 120px #ff1900,
+      0 0 200px #ff1900,
+      0 0 300px #ff1900,
+      0 0 420px #ff1900,
+      0 0 560px #ff1900;
+    animation: neon-ignite 0.03s 0.25s step-end both;
   }
 
   .neon-text-dim {
@@ -158,14 +193,17 @@
   100% {
     opacity: 1;
     text-shadow:
-      0 0 7px #fff,
-      0 0 10px #fff,
-      0 0 21px #fff,
-      0 0 42px var(--neon-glow),
-      0 0 82px var(--neon-glow),
-      0 0 92px var(--neon-glow),
-      0 0 102px var(--neon-glow),
-      0 0 151px var(--neon-glow);
+      0 0 2px #fff,
+      0 0 8px #fff,
+      0 0 16px #fff,
+      0 0 25px #ff1900,
+      0 0 50px #ff1900,
+      0 0 75px #ff1900,
+      0 0 120px #ff1900,
+      0 0 200px #ff1900,
+      0 0 300px #ff1900,
+      0 0 420px #ff1900,
+      0 0 560px #ff1900;
   }
   3%,
   7% {
@@ -178,6 +216,29 @@
       0 0 4px #fff,
       0 0 12px var(--neon-glow),
       0 0 24px var(--neon-glow);
+  }
+}
+
+/* ── Neon ignite animation ────────────────────────────────────── */
+@keyframes neon-ignite {
+  0% {
+    color: #b04418;
+    text-shadow: none;
+  }
+  100% {
+    color: var(--neon-yellow);
+    text-shadow:
+      0 0 2px #fff,
+      0 0 8px #fff,
+      0 0 16px #fff,
+      0 0 25px #ff1900,
+      0 0 50px #ff1900,
+      0 0 75px #ff1900,
+      0 0 120px #ff1900,
+      0 0 200px #ff1900,
+      0 0 300px #ff1900,
+      0 0 420px #ff1900,
+      0 0 560px #ff1900;
   }
 }
 
