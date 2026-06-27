@@ -1,0 +1,325 @@
+@import "tailwindcss" source("../");
+
+/* ── Self-hosted variable font ────────────────────────────────── */
+@font-face {
+  font-family: "TT Octosquares Trial";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/TT Octosquares Trial Variable.woff") format("woff");
+}
+
+/* ── Design tokens ────────────────────────────────────────────── */
+@layer base {
+  :root {
+    /* Metal palette — cold sheet steel */
+    --metal-bg: #808080;
+    --metal-light: #9a9a9a;
+    --metal-shadow: #656565;
+    --metal-deep: #4a4a4a;
+
+    /* Dark card surfaces */
+    --surface-card: #111318;
+    --surface-card-edge: #1e232c;
+
+    /* Text on metal bg */
+    --text-primary: #0d0d0d;
+    --text-secondary: #1f1f1f;
+    --text-muted: #444444;
+
+    /* Text on dark card */
+    --text-on-card: #f2efe6;
+    --text-on-card-muted: #b8b09c;
+
+    /* Neon */
+    --neon-yellow: #fff700;
+    --neon-glow: #ff2200;
+    --accent-yellow: #f5f07a;
+    --accent-red: #ff2200;
+
+    /* Ridge pattern width — wider on mobile (~12.5vw = 8 ridges), tighter on desktop (~5vw = 20 ridges) */
+    --ridge-w: 12.5vw;
+  }
+
+  @media (width >= 768px) {
+    :root {
+      --ridge-w: 5vw;
+    }
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    color-scheme: light;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    color: var(--text-primary);
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+    /* Corrugated sheet metal: sharp vertical ridges + base gradient */
+    background-color: var(--metal-bg);
+    background-image:
+      /* Uniform sharp ridges — wider vw on mobile for fewer ridges, tightens on desktop */
+      repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0.38) 0,
+        rgba(255, 255, 255, 0.38) calc(var(--ridge-w) * 0.0526),
+        rgba(255, 255, 255, 0.1) calc(var(--ridge-w) * 0.2105),
+        rgba(0, 0, 0, 0) calc(var(--ridge-w) * 0.4211),
+        rgba(0, 0, 0, 0.18) calc(var(--ridge-w) * 0.7368),
+        rgba(0, 0, 0, 0.24) calc(var(--ridge-w) * 0.7895),
+        rgba(0, 0, 0, 0.24) calc(var(--ridge-w) * 0.8421),
+        rgba(0, 0, 0, 0) var(--ridge-w)
+      ),
+      /* Top-to-bottom tonal shift */
+        linear-gradient(
+          180deg,
+          var(--metal-light) 0%,
+          var(--metal-bg) 40%,
+          var(--metal-shadow) 100%
+        );
+    min-height: 100dvh;
+    position: relative;
+  }
+
+  /* Everything above grain */
+  #root,
+  #app {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* ── Typography utilities ─────────────────────────────────────── */
+@layer utilities {
+  .font-graffiti {
+    font-family: "TT Octosquares Trial", sans-serif;
+    font-weight: 800;
+  }
+
+  .kicker {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .kicker-yellow {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-yellow);
+  }
+}
+
+/* ── Neon text effect ─────────────────────────────────────────── */
+@layer utilities {
+  .neon-text {
+    color: var(--neon-yellow);
+    opacity: 0.88;
+    text-shadow:
+      0 0 5px #fff,
+      0 0 8px #fff,
+      0 0 16px #fff,
+      0 0 32px var(--neon-glow),
+      0 0 62px var(--neon-glow),
+      0 0 72px var(--neon-glow),
+      0 0 82px var(--neon-glow),
+      0 0 121px var(--neon-glow);
+    animation: neon-flicker 8s 1s infinite;
+  }
+
+  .neon-text-dim {
+    color: var(--accent-yellow);
+    text-shadow:
+      0 0 4px rgba(255, 255, 255, 0.6),
+      0 0 12px var(--neon-glow),
+      0 0 24px var(--neon-glow);
+  }
+}
+
+/* ── Neon flicker animation ───────────────────────────────────── */
+@keyframes neon-flicker {
+  0%,
+  8%,
+  100% {
+    opacity: 1;
+    text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px var(--neon-glow),
+      0 0 82px var(--neon-glow),
+      0 0 92px var(--neon-glow),
+      0 0 102px var(--neon-glow),
+      0 0 151px var(--neon-glow);
+  }
+  3%,
+  7% {
+    opacity: 0.08;
+    text-shadow: none;
+  }
+  5% {
+    opacity: 0.45;
+    text-shadow:
+      0 0 4px #fff,
+      0 0 12px var(--neon-glow),
+      0 0 24px var(--neon-glow);
+  }
+}
+
+/* ── Scroll reveal ────────────────────────────────────────────── */
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 {
+    transition-delay: 0.1s;
+  }
+  .reveal-delay-2 {
+    transition-delay: 0.2s;
+  }
+  .reveal-delay-3 {
+    transition-delay: 0.35s;
+  }
+}
+
+/* ── Carousel 3D ──────────────────────────────────────────────── */
+@layer utilities {
+  .carousel-track {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+  }
+
+  .carousel-card {
+    transition:
+      transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      opacity 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      filter 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity, filter;
+  }
+
+  .carousel-card-center {
+    transform: translateX(0) rotateY(0deg) scale(1);
+    opacity: 1;
+    filter: blur(0px);
+    z-index: 10;
+  }
+
+  .carousel-card-left {
+    transform: translateX(-68%) rotateY(35deg) scale(0.82);
+    opacity: 0.5;
+    filter: blur(1.5px);
+    z-index: 5;
+  }
+
+  .carousel-card-right {
+    transform: translateX(68%) rotateY(-35deg) scale(0.82);
+    opacity: 0.5;
+    filter: blur(1.5px);
+    z-index: 5;
+  }
+}
+
+/* ── Neon button ──────────────────────────────────────────────── */
+@layer utilities {
+  .btn-neon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.4rem;
+    border: 2px solid var(--neon-yellow);
+    color: var(--neon-yellow);
+    font-family: "TT Octosquares Trial", sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      box-shadow 0.2s;
+    box-shadow:
+      0 0 8px var(--neon-glow),
+      inset 0 0 8px rgba(255, 247, 0, 0.05);
+  }
+
+  .btn-neon:hover {
+    background: var(--neon-yellow);
+    color: var(--surface-card);
+    box-shadow:
+      0 0 18px var(--neon-glow),
+      0 0 32px var(--neon-glow),
+      inset 0 0 12px rgba(255, 247, 0, 0.2);
+  }
+
+  .btn-neon-metal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.6rem;
+    border: 2px solid var(--text-primary);
+    color: var(--text-primary);
+    font-family: "TT Octosquares Trial", sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition:
+      background 0.2s,
+      color 0.2s;
+  }
+
+  .btn-neon-metal:hover {
+    background: var(--text-primary);
+    color: var(--metal-light);
+  }
+}
+
+/* ── Tag decoration (spray-paint drip accent) ─────────────────── */
+@layer utilities {
+  .tag-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .tag-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--neon-glow);
+    box-shadow: 0 0 8px var(--neon-glow);
+    transform: skewX(-4deg);
+  }
+}

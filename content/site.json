@@ -1,0 +1,24 @@
+{
+  "cs": {
+    "nav": {
+      "barbers": "Barbers",
+      "contact": "Kontakt"
+    },
+    "about": {
+      "label": "O nás",
+      "heading": "Nekompromisní barber shop ",
+      "body": "Barber Room je místo, kde se setkává řemeslo s ulicí. Žádné zbytečnosti, jen ostrá práce, správná muzika a parta lidí, co to berou vážně. Uvnitř se střihá s chirurgickou přesností, ale zároveň se občas stane, že ti barber během cutu vysvětlí, proč bys měl investovat do pštrosí farmy v Portugalsku. Vždycky to dává až podezřele velký smysl."
+    },
+    "barbers": {
+      "label": "Barbers",
+      "heading": "CHOOSE YOUR BARBER",
+      "bookCta": "Rezervovat"
+    },
+    "footer": {
+      "addressStreet": "Vyšehradská 413/7,",
+      "addressCity": "128 00 Nové Město",
+      "reservio": "Rezervuj přes Reservio",
+      "copyright": "© 2026 Barber Room"
+    }
+  }
+}

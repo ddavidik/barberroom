@@ -1,0 +1,38 @@
+[
+  {
+    "id": "lukas",
+    "name": "Lukáš",
+    "motto": "Tvoje máma ho má ráda.",
+    "skill": "Vedoucí odboru pro čistý fade",
+    "about": "Lukáš je zkušený barber se smyslem pro precizní fade a klasické střihy. Když zrovna není v Barber Roomu, nejspíš plaší tetřevy ve skotských horách. Od roku 2019 je údajně starostou malé vesnice v Polsku. Má taky zákaz vstupu do tří zoologických zahrad. Nikdo neví proč.",
+    "ig": "@lukasstrestik_",
+    "igUrl": "https://www.instagram.com/lukasstrestik_/",
+    "reservioUrl": "https://hoodbarber.reservio.com/",
+    "photo": "/images/lukas.jpg",
+    "photoPosition": "center top"
+  },
+  {
+    "id": "filas",
+    "name": "Filas",
+    "motto": "Nejlepší poměr cena/noha.",
+    "skill": "Mullet sommelier",
+    "about": "Filip je zakladatel a srdce Barber Roomu. Upravuje vlasy, vousy, zvířata v okolí, občas i architekturu a ega ostatních barberů. Říká se, že jednou ostříhal ovci tak dobře, že si pak sama rezervovala další termín. Umí dát kickflip, ale jen když se nikdo nedívá. Vedle barber shopu nabízí i certifikované masáže hráze. Certifikát si vytiskl sám. Má víc historek než vlasů na podlaze po sobotní šichtě, tak se s ním rozhodně nudit nebudeš.",
+    "ig": "@filasmoree",
+    "igUrl": "https://www.instagram.com/filasmoree/",
+    "reservioUrl": "https://www.reservio.cz/b/filipbarber",
+    "photo": "/images/filas.jpg",
+    "photoPosition": "center top"
+  },
+  {
+    "id": "freezer",
+    "name": "Freezer",
+    "motto": "Střihy stejně cold jako jeho beaty.",
+    "skill": "Beard DJ & fade producer",
+    "about": "Freezer žije v jeskyni s překvapivě kvalitním internetem a občas i vyleze na denní světlo, aby někomu udělal perfektní střih. Každé ráno nakrmí dva havrany svými beaty a pořád opakuje, že zima je jen mindset. Když přijde do barber shopu, nemusíme zapínat klimatizaci.",
+    "ig": "@freezerbeats808",
+    "igUrl": "https://www.instagram.com/freezerbeats808/",
+    "reservioUrl": "https://www.reservio.com/",
+    "photo": "/images/freezer.jpg",
+    "photoPosition": "center center"
+  }
+]
