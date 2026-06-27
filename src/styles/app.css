@@ -90,9 +90,9 @@
         rgba(255, 255, 255, 0.22) calc(var(--ridge-w) * 0.1053),
         rgba(255, 255, 255, 0.08) calc(var(--ridge-w) * 0.2105),
         rgba(0, 0, 0, 0) calc(var(--ridge-w) * 0.4211),
-        rgba(0, 0, 0, 0.28) calc(var(--ridge-w) * 0.7368),
-        rgba(0, 0, 0, 0.42) calc(var(--ridge-w) * 0.7895),
-        rgba(0, 0, 0, 0.42) calc(var(--ridge-w) * 0.8421),
+        rgba(0, 0, 0, 0.14) calc(var(--ridge-w) * 0.7368),
+        rgba(0, 0, 0, 0.22) calc(var(--ridge-w) * 0.7895),
+        rgba(0, 0, 0, 0.22) calc(var(--ridge-w) * 0.8421),
         rgba(0, 0, 0, 0) var(--ridge-w)
       ),
       /* Top-to-bottom tonal shift */
@@ -174,7 +174,7 @@
       0 0 300px #ff1900,
       0 0 420px #ff1900,
       0 0 560px #ff1900;
-    animation: neon-ignite 0.03s 0.25s step-end both;
+    animation: neon-ignite 0.03s 0.5s step-end both;
   }
 
   .neon-text-dim {

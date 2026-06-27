@@ -1,4 +1,13 @@
 {
+  "seo": {
+    "defaultTitle": "Barber Room Prague — Nekompromisní barber shop",
+    "defaultDescription": "Barber Room - nekompromisní barber shop v Praze na Vyšehradské. Filas, Lukáš, Freezer. Rezervuj přes Reservio.",
+    "siteUrl": "https://barberroomprague.netlify.app",
+    "ogImage": "/images/barber-room-og-image.png",
+    "ogImageWidth": 1200,
+    "ogImageHeight": 630,
+    "siteName": "Barber Room Prague"
+  },
   "cs": {
     "nav": {
       "barbers": "Barbers",

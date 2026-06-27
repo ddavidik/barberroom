@@ -5,6 +5,7 @@ import appCss from "~/styles/app.css?url";
 
 import { Footer } from "~/components/Footer";
 import { useRevealOnScroll } from "~/hooks/useReveal";
+import site from "@content/site.json";
 
 const RootComponent = () => {
   useRevealOnScroll();
@@ -63,12 +64,23 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1, viewport-fit=cover",
       },
       { name: "theme-color", content: "#808080" },
-      { title: "Barber Room Prague — Nekompromisní barber shop" },
+      { title: site.seo.defaultTitle },
       {
         name: "description",
-        content:
-          "Barber Room - nekompromisní barber shop v Praze na Vyšehradské. Filas, Lukáš, Freezer. Rezervuj přes Reservio.",
+        content: site.seo.defaultDescription,
       },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: site.seo.siteName },
+      { property: "og:title", content: site.seo.defaultTitle },
+      { property: "og:description", content: site.seo.defaultDescription },
+      { property: "og:url", content: site.seo.siteUrl },
+      { property: "og:image", content: `${site.seo.siteUrl}${site.seo.ogImage}` },
+      { property: "og:image:width", content: String(site.seo.ogImageWidth) },
+      { property: "og:image:height", content: String(site.seo.ogImageHeight) },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: site.seo.defaultTitle },
+      { name: "twitter:description", content: site.seo.defaultDescription },
+      { name: "twitter:image", content: `${site.seo.siteUrl}${site.seo.ogImage}` },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
