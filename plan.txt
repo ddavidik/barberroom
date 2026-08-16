@@ -1,0 +1,48 @@
+GAME-VIBE BOOKING FLOW — barber select -> service select -> Reservio hand-off
+
+Shared understanding:
+- Overlay/modal game-menu on existing single page, state via TanStack Router search params (?step=barber|service&barber=...). No new route files.
+- Barber select: 3 stylized (non-photoreal) low-poly flat-shaded 3D chars matching each barber's hair/style/body. three.js + @react-three/fiber. States: idle -> hover/focus (light up + wobble loop) -> click/Enter (settle+move, advance). Click/tap + arrow-key nav, single action to advance, no confirm step. IG icon-link per card (reuse igUrl).
+- Modeling: ship code-only procedural placeholder avatars first (primitives, zero external dep). Swap in AI-generated (Meshy/Tripo-style) low-poly glTF as fast-follow content task.
+- Fallback: detect no-WebGL / low-end / prefers-reduced-motion -> existing CSS photo-carousel untouched.
+- Service select: per-barber service arrays in barbers.json ({id, label, reservioServiceId}). Freezer also goes through this step. Czech copy candidate: "Vyber svoji úpravu" (finalize wording in Phase 1).
+- Reservio hand-off: brief in-page transition (glitch/flash + loading beat, ~0.5-1s) then redirect to reservioUrl + ?step=2&serviceId=<id>, new tab. Freezer has no real Reservio -> his CTA links to igUrl instead, no DM prefill, copy like "Napiš mi na Instagram".
+- Reservio service IDs: user sources real UUIDs manually per barber/service, fills into content. Not a code task — content-population blocker before ship.
+- Options menu: gear icon, small popover. Scope: language toggle (CS active, EN stub/disabled) + sound on/off only. No scope creep.
+- SFX: lightweight Web Audio, hover/select/menu blips, Kenney.nl CC0 packs. Add CREDITS.md (good practice, not legally required for CC0).
+- New deps approved: three, @react-three/fiber, @react-three/drei. No Framer Motion — CSS/R3F handles transitions.
+
+Phase 1 — Content model & data plumbing
+- Extend content/barbers.json: add services: [{id, label, reservioServiceId}] per barber (empty reservioServiceId placeholder until real UUIDs supplied).
+- Add content/site.json copy: barber-select heading, service-select heading + CTAs, freezer fallback message, options-menu labels.
+- Add CREDITS.md stub for future SFX/asset attributions.
+- No UI changes yet. Verify: build + lint pass, site unchanged.
+
+Phase 2 — Game-menu flow shell (no 3D yet)
+- Search-param-driven overlay state in index.tsx (step=barber|service, barber=<id>) via TanStack Router.
+- Build ServiceSelect step: accessible list/cards per barber's services, reuse existing neon visual language. Wire select -> transition placeholder -> redirect (reservioUrl+step=2&serviceId= when present, else igUrl for Freezer-style barbers).
+- Reuse existing CSS carousel as barber-select step for now (defer 3D to Phase 3) — flow shippable/testable end to end immediately.
+- Verify: full click-through barber -> service -> correct external URL opens new tab (test w/ Filas real serviceId placeholder).
+
+Phase 3 — 3D avatar layer + fallback detection
+- Add deps: three, @react-three/fiber, @react-three/drei.
+- Procedural low-poly placeholder character component (primitives, flat-shaded, tinted per barber brand color), idle/hover-wobble/select-move animation states.
+- WebGL/reduced-motion/low-end detection hook -> R3F scene or Phase 2 CSS carousel fallback.
+- Wire keyboard arrow-nav + click/Enter select into R3F scene, swap in for barber-select step.
+- Verify: keyboard nav, click, fallback path (forced via prefers-reduced-motion / WebGL disabled) all functionally correct.
+
+Phase 4 — Transition FX + SFX + options menu
+- Brief glitch/flash transition component on service confirm, before redirect.
+- Web Audio SFX hook (hover/select/menu blips), Kenney CC0 assets in public/sfx/.
+- Options menu (gear icon popover): language toggle (CS active, EN "coming soon" stub) + sound on/off (persist localStorage).
+- Verify: SFX respects sound-toggle, no autoplay before user gesture (browser autoplay policy), options menu keyboard-accessible.
+
+Phase 5 — Content population (blocking, manual, non-code)
+- User sources real Reservio serviceId UUIDs per barber/service, fills into barbers.json.
+- User generates AI low-poly glTF models per barber; swap into Phase 3 placeholder loader once ready (loader expects model path w/ graceful fallback to procedural primitive) — additive, no code changes needed.
+
+Open questions:
+- Exact final Czech copy for service-select heading/CTAs — "Vyber svoji úpravu" leading candidate, finalize wording for 3 service tiers + Freezer fallback message during Phase 1.
+- Real Reservio serviceId values and confirmation of Freezer's Reservio status — decoupled structurally (Phase 5) but blocks full "real" ship.
+- Options-menu gear icon placement (header/nav vs floating fixed) — small call, propose in Phase 4, flag if preference exists now.
+- AI-3D-gen tool choice/budget (Meshy/Tripo/Rodin free tiers) — not needed until Phase 5, pick before then.
