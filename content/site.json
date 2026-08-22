@@ -23,6 +23,30 @@
       "heading": "CHOOSE YOUR BARBER",
       "bookCta": "Rezervovat"
     },
+    "booking": {
+      "barberSelect": {
+        "heading": "CHOOSE YOUR BARBER"
+      },
+      "serviceSelect": {
+        "heading": "Vyber svoji úpravu",
+        "confirmCta": "Rezervovat",
+        "backCta": "Zpátky na barbery"
+      },
+      "freezerFallback": {
+        "message": "Freezer nemá Rezervace. Napiš mu na Instagram a domluvte si to.",
+        "cta": "Napiš mi na Instagram"
+      },
+      "options": {
+        "label": "Nastavení",
+        "language": "Jazyk",
+        "cs": "Čeština",
+        "en": "English",
+        "enComingSoon": "Brzy",
+        "sound": "Zvuk",
+        "on": "Zapnuto",
+        "off": "Vypnuto"
+      }
+    },
     "footer": {
       "addressStreet": "Vyšehradská 413/7,",
       "addressCity": "128 00 Nové Město",

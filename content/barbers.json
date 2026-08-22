@@ -8,6 +8,23 @@
     "ig": "@lukasstrestik_",
     "igUrl": "https://www.instagram.com/lukasstrestik_/",
     "reservioUrl": "https://hoodbarber.reservio.com/",
+    "services": [
+      {
+        "id": "haircut",
+        "label": "Střih",
+        "reservioServiceId": ""
+      },
+      {
+        "id": "beard",
+        "label": "Vousy",
+        "reservioServiceId": ""
+      },
+      {
+        "id": "combo",
+        "label": "Střih + vousy",
+        "reservioServiceId": ""
+      }
+    ],
     "photo": "/images/lukas.jpg",
     "photoPosition": "center top"
   },
@@ -20,6 +37,23 @@
     "ig": "@filasmoree",
     "igUrl": "https://www.instagram.com/filasmoree/",
     "reservioUrl": "https://www.reservio.cz/b/filipbarber",
+    "services": [
+      {
+        "id": "haircut",
+        "label": "Střih",
+        "reservioServiceId": ""
+      },
+      {
+        "id": "beard",
+        "label": "Vousy",
+        "reservioServiceId": ""
+      },
+      {
+        "id": "combo",
+        "label": "Střih + vousy",
+        "reservioServiceId": ""
+      }
+    ],
     "photo": "/images/filas.jpg",
     "photoPosition": "center top"
   },
@@ -32,6 +66,23 @@
     "ig": "@freezerbeats808",
     "igUrl": "https://www.instagram.com/m/freezerbeats808/",
     "reservioUrl": "https://www.reservio.com/",
+    "services": [
+      {
+        "id": "haircut",
+        "label": "Střih",
+        "reservioServiceId": ""
+      },
+      {
+        "id": "beard",
+        "label": "Vousy",
+        "reservioServiceId": ""
+      },
+      {
+        "id": "combo",
+        "label": "Střih + vousy",
+        "reservioServiceId": ""
+      }
+    ],
     "photo": "/images/freezer.jpg",
     "photoPosition": "center center"
   }
